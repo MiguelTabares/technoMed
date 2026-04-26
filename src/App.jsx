@@ -1,6 +1,19 @@
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import About from './pages/About'
+
 function App() {
   return (
-    <h1 className="text-red-500">hola mundo</h1>
+    <div className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
+      <Navbar />
+      <main className="container mx-auto max-w-7xl">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 
