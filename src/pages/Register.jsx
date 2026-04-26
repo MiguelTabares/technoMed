@@ -1,7 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { authFirebase } from '../backend/auth';
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      // Registrar usuario en Firebase Auth
+      await createUserWithEmailAndPassword(authFirebase, email, password);
+      
+      // Opcional: Podrías guardar el username en la base de datos Firestore aquí en el futuro.
+      
+      alert("Registration Successful // Entity created");
+      navigate("/"); // Redirigir al home (que ahora está protegido y le dejará entrar)
+    } catch (error) {
+      console.error("Firebase Registration Error:", error.code, error.message);
+      alert("Error en el registro: " + error.message);
+    }
+  };
+
   return (
     <div className="flex min-h-[calc(100vh-64px)] w-full flex-col lg:flex-row">
       {/* Left side - Decorative Atmosphere */}
@@ -46,7 +69,7 @@ const Register = () => {
             Initialize new entity registration.
           </p>
           
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleRegister}>
             <div className="flex flex-col gap-2">
               <label className="font-space text-xs font-semibold tracking-widest uppercase text-on-surface" htmlFor="username">
                 Entity Name // Username
@@ -61,6 +84,8 @@ const Register = () => {
                   placeholder="new_entity_01"
                   required
                   type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
             </div>
@@ -79,6 +104,8 @@ const Register = () => {
                   placeholder="user@network.sys"
                   required
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -97,6 +124,8 @@ const Register = () => {
                   placeholder="••••••••••••"
                   required
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
