@@ -12,7 +12,7 @@ Plataforma E-commerce para eventos de música techno con temática *Cyberpunk*, 
 - **Nombre del Proyecto:** TechnoMed 
 - **Autor:** Miguel Ángel Tabares Cuadros 
 - **Repositorio:** [https://github.com/MiguelTabares/technoMed.git](https://github.com/MiguelTabares/technoMed.git)
-- **Deploy (GitHub Pages):** *(Pendiente)*
+- **Deploy (GitHub Pages): https://migueltabares.github.io/technoMed/ 
 
 ## 🚀 Estado Actual del Proyecto (Features Implementadas)
 
