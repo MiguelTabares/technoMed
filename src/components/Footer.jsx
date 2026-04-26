@@ -8,7 +8,7 @@ const Footer = () => {
         
         {/* Branding */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="font-space text-2xl font-bold text-primary-container uppercase tracking-tighter drop-shadow-neon mb-2">
+          <h2 className="font-space text-2xl font-bold text-primary-container uppercase tracking-tighter drop-shadow-neon mb-2 hover:drop-shadow-[0_0_25px_rgba(183,247,0,0.9)] transition-all cursor-crosshair">
             Techno<span className="text-white">Med</span>
           </h2>
           <p className="font-epilogue text-sm text-on-surface-variant max-w-xs">
