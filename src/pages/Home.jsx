@@ -9,6 +9,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [eventsData, setEventsData] = useState([]);
   const [loadingEvents, setLoadingEvents] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,10 +44,12 @@ const Home = () => {
   const handleGenreClick = (genre) => {
     // Si haces clic en el mismo género, se quita el filtro (se muestran todos)
     setActiveGenre(prev => prev === genre ? null : genre);
+    setCurrentPage(1);
   };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
+    setCurrentPage(1);
   };
 
   const filteredEvents = eventsData.filter(event => {
@@ -62,6 +65,11 @@ const Home = () => {
 
     return matchGenre && matchSearch;
   });
+
+  const itemsPerPage = 7;
+  const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleEvents = filteredEvents.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="bg-background min-h-screen">
@@ -141,10 +149,42 @@ const Home = () => {
                 <h3 className="font-space text-xl font-bold text-primary-container uppercase mb-2 tracking-widest">Downloading Data...</h3>
                 <p className="font-epilogue text-sm text-on-surface-variant">Syncing with mainframe.</p>
               </div>
-            ) : filteredEvents.length > 0 ? (
-              filteredEvents.map(event => (
-                <EventRow key={event.id} {...event} />
-              ))
+            ) : visibleEvents.length > 0 ? (
+              <>
+                {visibleEvents.map(event => (
+                  <EventRow key={event.id} {...event} />
+                ))}
+                
+                {totalPages > 1 && (
+                  <div className="flex justify-center items-center gap-2 pt-8">
+                    <button 
+                      disabled={currentPage === 1}
+                      onClick={() => setCurrentPage(prev => prev - 1)}
+                      className="w-10 h-10 flex items-center justify-center border border-outline/30 text-white disabled:opacity-30 hover:bg-white/5 transition-colors rounded-none"
+                    >
+                      <span className="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-10 h-10 flex items-center justify-center font-space font-bold text-sm transition-colors rounded-none ${currentPage === page ? 'border-2 border-primary-container bg-primary-container text-black' : 'border border-outline/30 text-white hover:bg-white/5'}`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+
+                    <button 
+                      disabled={currentPage === totalPages}
+                      onClick={() => setCurrentPage(prev => prev + 1)}
+                      className="w-10 h-10 flex items-center justify-center border border-outline/30 text-white disabled:opacity-30 hover:bg-white/5 transition-colors rounded-none"
+                    >
+                      <span className="material-symbols-outlined">chevron_right</span>
+                    </button>
+                  </div>
+                )}
+              </>
             ) : (
               <div className="text-center py-20 bg-surface-container-low border border-outline/20 rounded-none">
                 <span className="material-symbols-outlined text-4xl text-on-surface-variant mb-4">search_off</span>
