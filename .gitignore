@@ -23,7 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
-# Stitch temporary files
+# Stitch and MCP temporary files
 stitch-output.json
+stitch_tools.json
 mcp-config.json
 test_stitch.cjs
+*stitch*
+*mcp*
