@@ -1,7 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { authFirebase } from '../backend/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const auth = async (userEmail, userPassword) => {
+    try {
+      await signInWithEmailAndPassword(authFirebase, userEmail, userPassword);
+      alert("Autenticado");
+      navigate("/");
+    } catch (error) {
+      console.error("Firebase Auth Error:", error.code, error.message);
+      alert("Error al iniciar sesión: " + error.message);
+    }
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    auth(email, password);
+  };
   return (
     <div className="flex min-h-[calc(100vh-64px)] w-full flex-col lg:flex-row">
       {/* Left side - Decorative Atmosphere */}
@@ -46,7 +68,7 @@ const Login = () => {
             Initialize secure connection to the mainframe.
           </p>
           
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={onSubmit}>
             <div className="flex flex-col gap-2">
               <label className="font-space text-xs font-semibold tracking-widest uppercase text-on-surface" htmlFor="email">
                 Identity // Email
@@ -61,6 +83,8 @@ const Login = () => {
                   placeholder="user@network.sys"
                   required
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -78,10 +102,18 @@ const Login = () => {
                   id="password"
                   placeholder="••••••••••••"
                   required
-                  type="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors" type="button">
-                  <span className="material-symbols-outlined text-[20px]">visibility</span>
+                <button 
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors" 
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <span className="material-symbols-outlined text-[20px]">
+                    {showPassword ? "visibility_off" : "visibility"}
+                  </span>
                 </button>
               </div>
             </div>
