@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './utils/routes/ProtectedRoute'
 import PublicRoute from './utils/routes/PublicRoute'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Login from './pages/Login'
@@ -13,9 +14,9 @@ import OrderConfirmed from './pages/OrderConfirmed'
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans antialiased text-slate-900">
+    <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto max-w-7xl">
+      <main className="container mx-auto max-w-7xl flex-1">
         <Routes>
           {/* Rutas Públicas (Solo accesibles si NO estás autenticado) */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />
@@ -30,6 +31,7 @@ function App() {
           <Route path="/order-confirmed" element={<ProtectedRoute element={<OrderConfirmed />} />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
