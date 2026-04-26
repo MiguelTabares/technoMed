@@ -14,7 +14,7 @@ import OrderConfirmed from './pages/OrderConfirmed'
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-surface-container-high/40 via-background to-background">
       <Navbar />
       <main className="container mx-auto max-w-7xl flex-1">
         <Routes>
