@@ -135,7 +135,7 @@ const Login = () => {
             
             <button className="group mt-8 flex w-full items-center justify-center gap-3 bg-primary-container py-5 font-space text-xs font-bold tracking-widest uppercase text-on-primary-container transition-all hover:bg-lime-400 hover:shadow-[0_0_20px_rgba(183,247,0,0.5)] active:scale-[0.98]" type="submit">
               Execute Login
-              <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              <span className="material-symbols-outlined transition-all duration-300 group-hover:translate-x-3 group-hover:text-white">arrow_forward</span>
             </button>
           </form>
           
