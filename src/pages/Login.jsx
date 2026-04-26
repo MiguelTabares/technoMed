@@ -107,7 +107,7 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button 
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors" 
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary-container hover:scale-110 transition-all duration-300" 
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                 >
