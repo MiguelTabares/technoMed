@@ -146,7 +146,7 @@ const Register = () => {
             
             <button className="group mt-8 flex w-full items-center justify-center gap-3 bg-primary-container py-5 font-space text-xs font-bold tracking-widest uppercase text-on-primary-container transition-all hover:bg-lime-400 hover:shadow-[0_0_20px_rgba(183,247,0,0.5)] active:scale-[0.98]" type="submit">
               Register Entity
-              <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">person_add</span>
+              <span className="material-symbols-outlined transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125">person_add</span>
             </button>
           </form>
           
