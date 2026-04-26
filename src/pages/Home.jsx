@@ -214,7 +214,7 @@ const CategoryCard = ({ id, title, color, img, active, onClick }) => (
 );
 
 const EventRow = ({ title, location, lineup, date, img, featured }) => (
-  <div className="flex flex-col md:flex-row bg-surface-container-low border border-outline/20 hover:border-primary-container group transition-colors rounded-none overflow-hidden">
+  <div className="flex flex-col md:flex-row bg-surface-container-low border border-outline/20 hover:border-primary-container group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,0,0,0.8)] rounded-none overflow-hidden">
     <div className="w-full md:w-48 h-48 relative border-b md:border-b-0 md:border-r border-outline/20">
       <img alt={title} className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 transition-all duration-500" src={img} />
       <div className="absolute inset-0 scanlines opacity-40"></div>
