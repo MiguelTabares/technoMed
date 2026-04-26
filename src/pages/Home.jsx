@@ -1,154 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../backend/auth';
-
-const eventsData = [
-  {
-    id: 1,
-    title: "Klockworks Showcase",
-    location: "Bodega 01 - Medellín",
-    lineup: "Ben Klock, DVS1, Stef Mendesidis (Live)",
-    date: "OCT 28 // 23:00 - 10:00",
-    img: "https://images.unsplash.com/photo-1594623930572-300a3011d9ae?q=80&w=2940&auto=format&fit=crop",
-    featured: false,
-    genre: "Industrial"
-  },
-  {
-    id: 2,
-    title: "EXHALE Warehouse",
-    location: "Pabellón Amarillo",
-    lineup: "Amelie Lens, Farrago, Kobosil",
-    date: "NOV 11 // 22:00 - 08:00",
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2831&auto=format&fit=crop",
-    featured: true,
-    genre: "Hardcore"
-  },
-  {
-    id: 3,
-    title: "Acid Reign Vol. 3",
-    location: "Club Subterráneo 1984",
-    lineup: "Charlotte de Witte, Alignment",
-    date: "NOV 18 // 23:30 - 06:00",
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2831&auto=format&fit=crop",
-    featured: false,
-    genre: "Acid"
-  },
-  {
-    id: 4,
-    title: "Afterlife Medellín",
-    location: "Estadio Cincuentenario",
-    lineup: "Tale Of Us, Anyma, MRAK, Kevin de Vries",
-    date: "FEB 02 // 18:00 - 04:00",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2940&auto=format&fit=crop",
-    featured: true,
-    genre: "Melodic"
-  },
-  {
-    id: 5,
-    title: "Vault Sessions X",
-    location: "Antigua Estación del Ferrocarril",
-    lineup: "SNTS, I Hate Models, Paula Temple",
-    date: "DIC 05 // 22:00 - 09:00",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2871&auto=format&fit=crop",
-    featured: false,
-    genre: "Industrial"
-  },
-  {
-    id: 6,
-    title: "Klangkuenstler All Night Long",
-    location: "Terraza Centro",
-    lineup: "Klangkuenstler",
-    date: "DIC 15 // 23:00 - 07:00",
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2874&auto=format&fit=crop",
-    featured: false,
-    genre: "Hardcore"
-  },
-  {
-    id: 7,
-    title: "Awakenings Connect",
-    location: "Plaza Mayor",
-    lineup: "Adam Beyer, Joris Voorn, Pan-Pot",
-    date: "ENE 14 // 16:00 - 03:00",
-    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2942&auto=format&fit=crop",
-    featured: true,
-    genre: "Melodic"
-  },
-  {
-    id: 8,
-    title: "Boiler Room Medellín",
-    location: "Secret Location",
-    lineup: "Deraout, Merino, Verraco, Julianna",
-    date: "FEB 20 // 21:00 - 05:00",
-    img: "https://images.unsplash.com/photo-1558317751-bc3ed6f85f72?q=80&w=2874&auto=format&fit=crop",
-    featured: false,
-    genre: "Acid"
-  },
-  {
-    id: 9,
-    title: "Neopop Satellite",
-    location: "Teatro al Aire Libre",
-    lineup: "Richie Hawtin, Paco Osuna",
-    date: "MAR 10 // 20:00 - 04:00",
-    img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2940&auto=format&fit=crop",
-    featured: false,
-    genre: "Industrial"
-  },
-  {
-    id: 10,
-    title: "Verknipt Colombia",
-    location: "Coliseo Ivan de Bedout",
-    lineup: "Sara Landry, Nico Moreno, OGUZ",
-    date: "MAR 25 // 21:00 - 06:00",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2940&auto=format&fit=crop",
-    featured: true,
-    genre: "Hardcore"
-  },
-  {
-    id: 11,
-    title: "Anjunadeep Open Air",
-    location: "Jardín Botánico",
-    lineup: "Ben Böhmer, Eli & Fur, Yotto",
-    date: "ABR 05 // 14:00 - 23:00",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2871&auto=format&fit=crop",
-    featured: false,
-    genre: "Melodic"
-  },
-  {
-    id: 12,
-    title: "Possession Medellín",
-    location: "Edificio Fabricato (Sótano)",
-    lineup: "Shlømo, Parfait, Héctor Oaks",
-    date: "ABR 18 // 23:59 - 08:00",
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2831&auto=format&fit=crop",
-    featured: false,
-    genre: "Industrial"
-  },
-  {
-    id: 13,
-    title: "999999999 Live",
-    location: "MUTE",
-    lineup: "999999999 (Live), Charlie Sparks",
-    date: "MAY 01 // 23:00 - 06:00",
-    img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2942&auto=format&fit=crop",
-    featured: true,
-    genre: "Acid"
-  },
-  {
-    id: 14,
-    title: "Teletech Showcase",
-    location: "Bodega de los Espejos",
-    lineup: "Azyr, BLK., Kettama",
-    date: "MAY 15 // 22:00 - 08:00",
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2874&auto=format&fit=crop",
-    featured: false,
-    genre: "Hardcore"
-  }
-];
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../backend/database.js';
 
 const Home = () => {
   const [activeGenre, setActiveGenre] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [eventsData, setEventsData] = useState([]);
+  const [loadingEvents, setLoadingEvents] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const eventsCollection = collection(db, 'events');
+        const eventSnapshot = await getDocs(eventsCollection);
+        const eventsList = eventSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setEventsData(eventsList);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      } finally {
+        setLoadingEvents(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
 
   const myLogout = async () => {
     try {
@@ -254,7 +135,13 @@ const Home = () => {
           </div>
           
           <div className="space-y-6">
-            {filteredEvents.length > 0 ? (
+            {loadingEvents ? (
+              <div className="text-center py-20 bg-surface-container-low border border-outline/20 rounded-none animate-pulse">
+                <span className="material-symbols-outlined text-4xl text-primary-container mb-4 animate-[spin_2s_linear_infinite]">sync</span>
+                <h3 className="font-space text-xl font-bold text-primary-container uppercase mb-2 tracking-widest">Downloading Data...</h3>
+                <p className="font-epilogue text-sm text-on-surface-variant">Syncing with mainframe.</p>
+              </div>
+            ) : filteredEvents.length > 0 ? (
               filteredEvents.map(event => (
                 <EventRow key={event.id} {...event} />
               ))
