@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Stitch temporary files
+stitch-output.json
+mcp-config.json
+test_stitch.cjs
