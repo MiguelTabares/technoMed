@@ -9,7 +9,7 @@ const Login = () => {
         <img
           alt="Atmosphere"
           className="absolute inset-0 h-full w-full object-cover opacity-60 mix-blend-luminosity grayscale contrast-125"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKxi4Dfzv3XLLaKf_wB_C6jgy979O3o9Nl2tpDP69z27dq0GT0t9DMufjvWoqDm4020Q0_MG8Y948oojnBtqg2GatVu6aXJeNA1sbazq6R6IkszGaOn7_CQhIyUXvNwiDNBEwcEMgENLLWZkNG8JmmKWHz5nNJ3-2D8SIkxs8sd-ubSbQXXYqE8dbP2dvl2t70y0vD1jxMLtIfMNomTnaf8qaOeBsFDvoo776wAsRGuSUEPcOS_RQygx45AjuLIs18mfhWR9UvbLI"
+          src="https://images.unsplash.com/photo-1558317751-bc3ed6f85f72?q=80&w=2874&auto=format&fit=crop"
         />
         <div className="absolute inset-0 z-10 bg-gradient-to-r from-background to-transparent opacity-90"></div>
         <div className="scanlines pointer-events-none absolute inset-0 z-20 mix-blend-overlay"></div>
