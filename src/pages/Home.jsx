@@ -95,7 +95,7 @@ const Home = () => {
               <span className="material-symbols-outlined">search</span>
             </div>
             <input
-              className="w-full bg-surface-container-low/80 backdrop-blur-md border-b-2 border-primary-container py-5 pl-12 pr-4 text-white font-space text-sm tracking-widest uppercase focus:outline-none focus:bg-surface-container-high focus:shadow-[0_0_20px_rgba(183,247,0,0.2)] transition-all rounded-none placeholder:text-on-surface-variant"
+              className="w-full hover:bg-surface-container-high/90 hover:shadow-[0_0_15px_rgba(183,247,0,0.2)] bg-surface-container-low/80 backdrop-blur-md border-b-2 border-primary-container py-5 pl-12 pr-4 text-white font-space text-sm tracking-widest uppercase focus:outline-none focus:bg-surface-container-high focus:shadow-[0_0_20px_rgba(183,247,0,0.2)] transition-all rounded-none placeholder:text-on-surface-variant"
               placeholder="SEARCH EVENTS, DJS, VENUES..."
               type="text"
               value={searchQuery}
