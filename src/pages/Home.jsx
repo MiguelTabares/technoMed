@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { logout } from '../backend/auth';
 
 const eventsData = [
   {
@@ -147,6 +148,16 @@ const eventsData = [
 const Home = () => {
   const [activeGenre, setActiveGenre] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const myLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Error disconnecting:", error);
+    }
+  };
 
   const handleGenreClick = (genre) => {
     // Si haces clic en el mismo género, se quita el filtro (se muestran todos)
@@ -186,7 +197,7 @@ const Home = () => {
         </div>
         
         <div className="relative z-10 w-full max-w-4xl px-6 flex flex-col items-center text-center">
-          <h1 className="font-space text-7xl font-bold text-primary-container mb-6 uppercase tracking-tighter drop-shadow-neon">
+          <h1 className="font-space text-5xl md:text-7xl font-bold text-primary-container mb-6 uppercase tracking-tighter drop-shadow-neon">
             Initiate Sequence
           </h1>
           
@@ -205,6 +216,11 @@ const Home = () => {
               Execute
             </button>
           </div>
+          
+          <button onClick={myLogout} className="mt-8 flex items-center gap-2 text-on-surface-variant hover:text-error transition-colors font-space text-xs font-bold uppercase tracking-widest">
+            <span className="material-symbols-outlined text-[16px]">power_settings_new</span>
+            Terminate Connection // Logout
+          </button>
         </div>
       </section>
 
