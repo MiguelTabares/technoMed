@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="flex items-center justify-between p-4 md:p-6 bg-background/90 backdrop-blur-md border-b border-outline/20 sticky top-0 z-50">
       <div className="flex items-center gap-8">
         <Link to="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-          <h1 className="text-xl font-bold font-space tracking-widest uppercase text-white">
+          <h1 className="text-xl font-bold font-space tracking-widest uppercase text-white hover:text-primary-container hover:drop-shadow-neon transition-all duration-300">
             Techno_Med
           </h1>
         </Link>
