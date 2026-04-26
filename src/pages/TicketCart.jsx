@@ -86,7 +86,7 @@ const TicketCart = () => {
             <div className="border-t border-outline/30 pt-6 mb-8">
               <div className="flex justify-between items-end">
                 <span className="font-space text-xs font-bold text-white uppercase tracking-widest">Total Access</span>
-                <span className="font-space text-5xl font-bold text-primary-container leading-none tracking-tighter">${total.toFixed(2)}</span>
+                <span className="font-space text-5xl font-bold text-primary-container leading-none tracking-tighter hover:animate-pulse cursor-crosshair">${total.toFixed(2)}</span>
               </div>
             </div>
 
