@@ -63,7 +63,7 @@ const Login = () => {
             <span className="font-space text-2xl font-bold tracking-widest uppercase">Techno_Med</span>
           </div>
           
-          <h2 className="font-space text-5xl font-bold text-white mb-2">AUTH_SEQ</h2>
+          <h2 className="font-space text-5xl font-bold text-white mb-2">AUTH</h2>
           <p className="mb-10 font-epilogue text-on-surface-variant">
             Initialize secure connection to the mainframe.
           </p>

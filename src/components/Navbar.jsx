@@ -43,13 +43,13 @@ const Navbar = () => {
           to="/login"
           className="px-4 py-2 text-xs font-bold font-space tracking-widest text-on-surface-variant hover:text-white uppercase transition-all"
         >
-          Auth_Seq
+          AUTH
         </Link>
         <Link 
           to="/register"
           className="px-6 py-2 text-xs font-bold font-space tracking-widest text-on-primary-container bg-primary-container hover:bg-lime-400 rounded-none shadow-[0_0_15px_rgba(183,247,0,0.3)] uppercase transition-all active:scale-95"
         >
-          Reg_Seq
+          REGISTRY
         </Link>
         </div>
       </div>
@@ -72,8 +72,8 @@ const Navbar = () => {
           <Link onClick={() => setIsMobileMenuOpen(false)} to="/" className="text-white font-space font-bold uppercase tracking-widest text-lg">Home</Link>
           <Link onClick={() => setIsMobileMenuOpen(false)} to="/about" className="text-white font-space font-bold uppercase tracking-widest text-lg">About</Link>
           <div className="h-[1px] bg-outline/20 w-full"></div>
-          <Link onClick={() => setIsMobileMenuOpen(false)} to="/login" className="text-on-surface-variant font-space font-bold uppercase tracking-widest text-lg">Auth_Seq</Link>
-          <Link onClick={() => setIsMobileMenuOpen(false)} to="/register" className="text-primary-container font-space font-bold uppercase tracking-widest text-lg">Reg_Seq</Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} to="/login" className="text-on-surface-variant font-space font-bold uppercase tracking-widest text-lg">AUTH</Link>
+          <Link onClick={() => setIsMobileMenuOpen(false)} to="/register" className="text-primary-container font-space font-bold uppercase tracking-widest text-lg">REGISTRY</Link>
         </div>
       )}
     </nav>

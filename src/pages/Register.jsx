@@ -64,7 +64,7 @@ const Register = () => {
             <span className="font-space text-2xl font-bold tracking-widest uppercase">Techno_Med</span>
           </div>
           
-          <h2 className="font-space text-5xl font-bold text-white mb-2">REG_SEQ</h2>
+          <h2 className="font-space text-5xl font-bold text-white mb-2">REGISTRY</h2>
           <p className="mb-10 font-epilogue text-on-surface-variant">
             Initialize new entity registration.
           </p>
