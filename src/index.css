@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary-container: #b7f700;
+  --color-on-primary-container: #141f00;
+  --color-secondary: #e9b3ff;
+  --color-background: #131313;
+  --color-surface: #131313;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #c2caad;
+  --color-outline: #8c9479;
+
+  --font-space: "Space Grotesk", sans-serif;
+  --font-epilogue: "Epilogue", sans-serif;
+
+  --drop-shadow-neon: 0 0 15px rgba(183, 247, 0, 0.4);
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Space+Grotesk:wght@500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+  body {
+    @apply bg-background text-on-surface font-epilogue antialiased;
+  }
+}
+
+@layer utilities {
+  .scanlines {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0.2)
+    );
+    background-size: 100% 4px;
+  }
+}
